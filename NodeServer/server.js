@@ -71,3 +71,19 @@ app.get('/orderDetails',function(req,res){
       });
     });
 });
+
+
+// add new product
+app.post('/products',function(req,res){
+    mongo.connect(url, function(err, db) {
+        if (err) throw err;
+      var dbo = db.db("OnlineShopping");
+      var newProduct = { ProductName: "NewProduct", SupplierID: 2,CategoryID:8,QuantityPerUnit:"4 boxes"
+      ,UnitPrice:20,UnitsInStock:20,UnitsOnOrder:0,ReorderLevel:0,Discontinued:0};
+      dbo.collection("products").insertOne(newProduct , function(err, result) {
+        if (err) throw err;
+        console.log("new product added");
+        db.close();
+      });
+    });
+});
