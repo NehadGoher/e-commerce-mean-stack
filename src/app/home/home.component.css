@@ -1,0 +1,17 @@
+#picDiv{
+    background-color:#428bca;
+    opacity: 0.9;
+
+}
+
+#homePic{
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+}
+
+#search{
+    z-index: 999;
+    position: absolute;
+    top: 50%;
+}
