@@ -2,11 +2,11 @@ var express= require('express');
 var Router=express.Router();
 var mongo = require('mongodb').MongoClient;
 var assert=require('assert');
-
+var cors =require('cors');
 app = express();
 port=7000;
 app.listen(port);
-
+app.use(cors());
 console.log(port);
 var url = "mongodb://localhost:27017/";
 // Search by Product Name
@@ -14,6 +14,7 @@ var productname="Tofu";
 app.get('/products/:pName',function(req,res){
     var data="";
     mongo.connect(url, function(err, db) {
+      
         if (err) throw err;
       var dbo = db.db("OnlineShopping");
       dbo.collection("products").findOne({"ProductName":req.params.pName}, function(err, result) {
