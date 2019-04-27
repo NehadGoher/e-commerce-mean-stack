@@ -1,0 +1,11 @@
+<div class="col-12 row" *ngFor="let item of products">
+  <div class="card offset-1 col -3">
+    
+    <div class="card-body">
+      <h4>{{item.ProductName}}</h4>
+      <span>{{item.UnitPrice}}</span>
+      <span>{{item.UnitsInStock}}</span>
+      <input type="button" (click)="addToCart(item.ProductID)">
+    </div>
+  </div>
+</div>
