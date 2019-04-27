@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  //keyword="";
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getKeyword(keyword){
+    
+    console.log(keyword);
   }
 
 }

@@ -10,13 +10,11 @@
     opacity: 0.6;
 }
 
-#searchDiv{
+h1{
+    text-align: center;
     z-index: 999;
     position: absolute;
     top: 50%;
-}
-
-#sub{
-    position: relative;
-    margin-top: 25px;
+    font-size: 100px;
+    color: white;
 }

@@ -1,6 +1,8 @@
-
 <div id="picDiv">
   <img src="../../assets/images/Maple_edited_1024x1024.jpg" id="homePic"> 
 </div>
+<form method="POST" id="searchDiv" class="col-12">
+  <input type="text" class="form-control offset-2 col-8 "  placeholder="search for products" #_keyword>
+  <input type="button" id="sub" value="Search" class="btn btn-light col-2" (click)="getKeyword(_keyword.value)" >
+</form>
 
-<input type="text" class="form-control offset-2 col-8" id="search" placeholder="search for products">
