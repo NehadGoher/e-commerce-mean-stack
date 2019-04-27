@@ -13,6 +13,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
+import {ProductServiceService} from './product-service.service';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import { ProductsComponent } from './products/products.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ProductServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
