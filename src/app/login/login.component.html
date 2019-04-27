@@ -1,3 +1,26 @@
-<p>
-  login works!
-</p>
+
+
+<div id="rest" class="col-12 row">
+  <form method="POST" class="col-5 offset-1 ">
+
+    <div class="col-12 row">
+        <label class="col-3">Email</label>
+        <input type="email" name="email" placeholder="email@email.com" #_email class="form-control col-9" >
+    </div>
+
+    <div class="col-12 row">
+        <label class="col-3">Password</label>
+        <input type="password" name="password" placeholder="password" #_password class="form-control col-9" >
+    </div>
+    <input type="button" value="login" class="btn btn-info col-4" (click)="getInfo(_email.value,_password.value)">
+  </form>
+
+  <div  class="col-5 offset-1">
+        <h1>
+          Login now and explore the new offers
+        </h1>
+  </div>
+</div>
+<div id="background">
+    <img src="../../assets/images/login.jpg" >
+  </div>

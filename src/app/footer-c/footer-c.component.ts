@@ -9,6 +9,7 @@ export class FooterCComponent implements OnInit {
 
   constructor() { }
 
+  
   ngOnInit() {
   }
 

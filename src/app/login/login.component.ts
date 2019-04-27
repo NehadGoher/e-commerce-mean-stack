@@ -11,5 +11,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
+  getInfo(_email,_password){
 
+    console.log(_email + " "+ _password);
+  }
 }
