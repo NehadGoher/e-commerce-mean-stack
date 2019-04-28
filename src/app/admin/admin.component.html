@@ -27,8 +27,8 @@
     <td class="col-sm-1">{{i.UnitsOnOrder}}</td>
     <td class="col-sm-1">{{i.ReorderLevel}}</td>
     <td class="col-sm-1">{{i.Discontinued}}</td>
-    <td class="col-sm-1"><input type="button" value="Delete"></td>
-    <td class="col-sm-1"><input type="button" value="Edit"></td>
+    <td class="col-sm-1"><input type="button" class=" btn-danger" value="Delete" (click)="delete(i._id)"></td>
+    <td class="col-sm-1"><input type="button" value="Edit" (click)="update(i._id,i.ProductName,i.ProductID)"></td>
   </tr>
   </tbody>
 </table>
@@ -43,5 +43,18 @@
     <input type="text" class="form-control offset-2 col-8 "  placeholder="ReorderLevel" name="RLevel" [(ngModel)]="RLevel">
     <input type="text" class="form-control offset-2 col-8 "  placeholder="Discontinued" name="Dis" [(ngModel)]="Dis">
   <input type="button" id="sub" value="Submit" class="btn btn-light col-2" (click)="add()" >
+
+</form>
+<form class="form" *ngIf="visible==2">
+  <input type="text" class="form-control offset-2 col-8 "   name="PName" [(ngModel)]="PName">
+  <input type="text" class="form-control offset-2 col-8 "   name="SID" [(ngModel)]="SID">
+  <input type="text" class="form-control offset-2 col-8 "   name="CID" [(ngModel)]="CID">
+  <input type="text" class="form-control offset-2 col-8 "   name="Quantity" [(ngModel)]="Quantity">
+  <input type="text" class="form-control offset-2 col-8 "   name="Price" [(ngModel)]="Price">
+  <input type="text" class="form-control offset-2 col-8 "   name="UInStock" [(ngModel)]="UInStock">
+  <input type="text" class="form-control offset-2 col-8 "   name="UOnOrder" [(ngModel)]="UOnOrder">
+  <input type="text" class="form-control offset-2 col-8 "   name="RLevel" [(ngModel)]="RLevel">
+  <input type="text" class="form-control offset-2 col-8 "   name="Dis" [(ngModel)]="Dis">
+<input type="button" id="sub" value="Submit" class="btn btn-light col-2" (click)="updateProduct()" >
 
 </form>
