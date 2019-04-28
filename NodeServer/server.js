@@ -24,8 +24,8 @@ app.get('/products/:pName',function(req,res){
     mongo.connect(url, function(err, db) {
       
         if (err) throw err;
-     // var dbo = db.db("OnlineShopping");
-      var dbo = db.db("e-commerce");
+      var dbo = db.db("OnlineShopping");
+     // var dbo = db.db("e-commerce");
       dbo.collection("products").find({"ProductName":req.params.pName}).toArray( function(err, result) {
         if (err) throw err;
         //console.log(result);
@@ -42,8 +42,8 @@ app.get('/products/:pName',function(req,res){
 app.get('/categories/:CName',function(req,res){
     mongo.connect(url, function(err, db) {
         if (err) throw err;
-     // var dbo = db.db("OnlineShopping");
-      var dbo = db.db("e-commerce");
+      var dbo = db.db("OnlineShopping");
+     // var dbo = db.db("e-commerce");
 
       dbo.collection("categories").findOne({"CategoryName":req.params.CName}, function(err, result) {
         if (err) throw err;
@@ -60,8 +60,8 @@ var OrderNo=10250;
 app.get('/order/:orderID',function(req,res){
     mongo.connect(url, function(err, db) {
         if (err) throw err;
-     // var dbo = db.db("OnlineShopping");
-      var dbo = db.db("e-commerce");
+      var dbo = db.db("OnlineShopping");
+     // var dbo = db.db("e-commerce");
 
       dbo.collection("orders").findOne({"OrderID":req.params.orderID}, function(err, result) {
         if (err) throw err;
@@ -78,8 +78,8 @@ app.get('/order/:orderID',function(req,res){
 app.get('/orderDetails/:orderID',function(req,res){
     mongo.connect(url, function(err, db) {
         if (err) throw err;
-     // var dbo = db.db("OnlineShopping");
-      var dbo = db.db("e-commerce");
+      var dbo = db.db("OnlineShopping");
+     // var dbo = db.db("e-commerce");
 
       dbo.collection("order-details").find({"OrderID":req.params.orderID}).toArray(function(err, result) {
         if (err) throw err;
@@ -94,8 +94,8 @@ app.get('/orderDetails/:orderID',function(req,res){
 app.post('/product',function(req,res){
     mongo.connect(url, function(err, db) {
         if (err) throw err;
-     // var dbo = db.db("OnlineShopping");
-      var dbo = db.db("e-commerce");
+      var dbo = db.db("OnlineShopping");
+     // var dbo = db.db("e-commerce");
 
       var newProduct = {ProductID:req.body.ProductID, ProductName: req.body.ProductName, SupplierID: req.body.SupplierID,CategoryID:req.body.CategoryID,
         QuantityPerUnit:req.body.QuantityPerUnit
@@ -114,8 +114,8 @@ app.post('/product',function(req,res){
 app.get('/products',function(req,res){
   mongo.connect(url, function(err, db) {
       if (err) throw err;
-   // var dbo = db.db("OnlineShopping");
-      var dbo = db.db("e-commerce");
+    var dbo = db.db("OnlineShopping");
+   //   var dbo = db.db("e-commerce");
 
     dbo.collection("products").find({}).toArray(function(err, result) {
       if (err) throw err;
@@ -132,9 +132,13 @@ app.put('/product/:PId',function(req,res){
       if (err) throw err;
    // var dbo = db.db("OnlineShopping");
     var dbo = db.db("e-commerce");
+<<<<<<< HEAD
 
 console.log("update in server");
 //console.log(req.body);
+=======
+console.log(req.body);
+>>>>>>> d6464faa4b9ea2f7ab577a529539de92ad42e763
     var updatedProduct = {ProductID:req.body.ProductID, ProductName: req.body.ProductName, SupplierID: req.body.SupplierID,CategoryID:req.body.CategoryID,
       QuantityPerUnit:req.body.QuantityPerUnit
     ,UnitPrice:parseFloat(req.body.UnitPrice),UnitsInStock:req.body.UnitsInStock,UnitsOnOrder:req.body.UnitsOnOrder,
@@ -160,7 +164,11 @@ console.log("update in server");
 app.delete('/product/:PId',function(req,res){
   mongo.connect(url, function(err, db) {
       if (err) throw err;
+<<<<<<< HEAD
     //var dbo = db.db("OnlineShopping");
+=======
+   // var dbo = db.db("OnlineShopping");
+>>>>>>> d6464faa4b9ea2f7ab577a529539de92ad42e763
     var dbo = db.db("e-commerce");
    console.log(req.params.PId);
 
