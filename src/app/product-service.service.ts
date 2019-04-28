@@ -11,7 +11,7 @@ export class ProductServiceService {
 
   constructor(private http: HttpClient) { }
 
-
+key; 
   getProduct(keyword)
   {
     this.key = keyword;
