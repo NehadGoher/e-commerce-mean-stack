@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
 import {ProductServiceService} from './product-service.service';
 import { AdminComponent } from './admin/admin.component';
-
+import {CategoryService} from './category.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { AdminComponent } from './admin/admin.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [ProductServiceService],
+  providers: [ProductServiceService,CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
