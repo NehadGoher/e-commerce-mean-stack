@@ -52,10 +52,10 @@ load()
     ReorderLevel:this.RLevel,Discontinued:this.Dis};
 this.PService.addProduct(obj).subscribe((data)=>{
   
+
 });
 this.load();
 this.visible=1;
-
   }
   update(prodId,prodName,id)
   {
@@ -73,7 +73,6 @@ this.visible=1;
   }
   updateProduct()
   {
-    
     var obj = {ProductID:this.Pid, ProductName:this.PName, SupplierID: this.SID,CategoryID:this.CID,
       QuantityPerUnit:this.Quantity
     ,UnitPrice:this.Price,UnitsInStock:this.UInStock,UnitsOnOrder:this.UOnOrder,
