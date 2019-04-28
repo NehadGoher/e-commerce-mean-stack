@@ -10,10 +10,11 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
-
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
 import {ProductServiceService} from './product-service.service';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -25,12 +26,14 @@ import {ProductServiceService} from './product-service.service';
     LoginComponent,
     RegisterComponent,
     NotFoundComponent,
-    ProductsComponent
+    ProductsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ProductServiceService],
   bootstrap: [AppComponent]

@@ -4,6 +4,13 @@ var mongo = require('mongodb').MongoClient;
 var assert=require('assert');
 var cors =require('cors');
 app = express();
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );       
+app.use(bodyParser.urlencoded({     
+  extended: true
+})); 
+app.use(express.json());       
+app.use(express.urlencoded());
 port=7000;
 app.listen(port);
 app.use(cors());
@@ -82,16 +89,17 @@ app.get('/orderDetails/:orderID',function(req,res){
 
 
 // add new product
-app.post('/products/:PName/:SID/:CID/:Quantity/:Price/:UInStock/:UOnOrder/:OLevel/:dis',function(req,res){
+app.post('/product',function(req,res){
     mongo.connect(url, function(err, db) {
         if (err) throw err;
       var dbo = db.db("OnlineShopping");
      // var dbo = db.db("e-commerce");
 
-      var newProduct = { ProductName: req.params.pName, SupplierID: req.params.SID,CategoryID:req.params.CID,
-        QuantityPerUnit:req.params.Quantity
-      ,UnitPrice:req.params.Price,UnitsInStock:req.params.UInStock,UnitsOnOrder:req.params.UOnOrder,
-      ReorderLevel:req.params.OLevel,Discontinued:req.params.dis};
+      var newProduct = {ProductID:req.body.ProductID, ProductName: req.body.ProductName, SupplierID: req.body.SupplierID,CategoryID:req.body.CategoryID,
+        QuantityPerUnit:req.body.QuantityPerUnit
+      ,UnitPrice:req.body.UnitPrice,UnitsInStock:req.body.UnitsInStock,UnitsOnOrder:req.body.UnitsOnOrder,
+      ReorderLevel:req.body.ReorderLevel,Discontinued:req.body.Discontinued};
+      console.log(newProduct);
       dbo.collection("products").insertOne(newProduct , function(err, result) {
         if (err) throw err;
         console.log("new product added");

@@ -1,0 +1,47 @@
+
+  <input type="button" id="addProduct" value="Add Product" class="btn btn-light col-2" (click)="addProduct()">
+<table class="table table-striped" id="table" *ngIf="visible==1">
+  <thead>
+  <tr class="d-flex row">
+      <th class="col-sm-1">ProductID</th>
+    <th class="col-sm-1">ProductName</th>
+    <th class="col-sm-1">SupplierID</th>
+    <th class="col-sm-1">CategoryID</th>
+    <th class="col-sm-1">QuantityPerUnit</th>
+    <th class="col-sm-1">UnitPrice</th>
+    <th class="col-sm-1">UnitsInStock</th>
+    <th class="col-sm-1">UnitsOnOrder</th>
+    <th class="col-sm-1">ReorderLevel</th>
+    <th class="col-sm-1">Discontinued</th>
+  </tr>
+  </thead>
+  <tbody >
+    <tr *ngFor="let i of products" class="d-flex row">
+    <td class="col-sm-1">{{i.ProductID}}</td>
+    <td class="col-sm-1">{{i.ProductName}}</td>
+    <td class="col-sm-1">{{i.SupplierID}}</td>
+    <td class="col-sm-1">{{i.CategoryID}}</td>
+    <td class="col-sm-1">{{i.QuantityPerUnit}}</td>
+    <td class="col-sm-1">{{i.UnitPrice}}</td>
+    <td class="col-sm-1">{{i.UnitsInStock}}</td>
+    <td class="col-sm-1">{{i.UnitsOnOrder}}</td>
+    <td class="col-sm-1">{{i.ReorderLevel}}</td>
+    <td class="col-sm-1">{{i.Discontinued}}</td>
+    <td class="col-sm-1"><input type="button" value="Delete"></td>
+    <td class="col-sm-1"><input type="button" value="Edit"></td>
+  </tr>
+  </tbody>
+</table>
+<form class="form" *ngIf="visible==0">
+    <input type="text" class="form-control offset-2 col-8 "  placeholder="ProductName" name="PName" [(ngModel)]="PName">
+    <input type="text" class="form-control offset-2 col-8 "  placeholder="SupplierID" name="SID" [(ngModel)]="SID">
+    <input type="text" class="form-control offset-2 col-8 "  placeholder="CategoryID"  name="CID" [(ngModel)]="CID">
+    <input type="text" class="form-control offset-2 col-8 "  placeholder="QuantityPerUnit" name="Quantity" [(ngModel)]="Quantity">
+    <input type="text" class="form-control offset-2 col-8 "  placeholder="UnitPrice" name="Price" [(ngModel)]="Price">
+    <input type="text" class="form-control offset-2 col-8 "  placeholder="UnitsInStock" name="UInStock" [(ngModel)]="UInStock">
+    <input type="text" class="form-control offset-2 col-8 "  placeholder="UnitsOnOrder" name="UOnOrder" [(ngModel)]="UOnOrder">
+    <input type="text" class="form-control offset-2 col-8 "  placeholder="ReorderLevel" name="RLevel" [(ngModel)]="RLevel">
+    <input type="text" class="form-control offset-2 col-8 "  placeholder="Discontinued" name="Dis" [(ngModel)]="Dis">
+  <input type="button" id="sub" value="Submit" class="btn btn-light col-2" (click)="add()" >
+
+</form>

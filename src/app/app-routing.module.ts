@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-
+import {AdminComponent} from './admin/admin.component';
 
 
 const routes: Routes = [
@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: 'Register', component: RegisterComponent },
   { path: 'Home', component: HomeComponent },
   { path: '', component: HomeComponent },
+  {path: 'admin',component:AdminComponent},
   { path: '**', component: NotFoundComponent },
-  
   
 ];
 
