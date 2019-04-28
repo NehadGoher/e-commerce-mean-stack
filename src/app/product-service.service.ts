@@ -7,11 +7,13 @@ import {HttpClient} from '@angular/common/http';
 export class ProductServiceService {
 
   uri = 'http://localhost:7000';
+  products :any= [];
 
   constructor(private http: HttpClient) { }
-
+key;
   getProduct(keyword)
   {
+    this.key = keyword;
     return this.http.get(`${this.uri}`+"/products/"+keyword);
   }
   getProducts()
