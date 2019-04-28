@@ -63,11 +63,12 @@ this.visible=1;
     this.Pid=id;
      this.visible=2;
      this.PService.getProduct(prodName).subscribe((data:Product)=>{
-      this.PName=data.ProductName, this.SID=data.SupplierID,this.CID=data.CategoryID,
-      this.Quantity=data.QuantityPerUnit
-    ,this.Price=data.UnitPrice,this.UInStock=data.UnitsInStock,this.UOnOrder=data.UnitsOnOrder,
-    this.RLevel=data.ReorderLevel,this.Dis=data.Discontinued;
-    console.log(data);
+       var data2=data[0];
+      this.PName=data2.ProductName, this.SID=data2.SupplierID,this.CID=data2.CategoryID,
+      this.Quantity=data2.QuantityPerUnit
+    ,this.Price=data2.UnitPrice,this.UInStock=data2.UnitsInStock,this.UOnOrder=data2.UnitsOnOrder,
+    this.RLevel=data2.ReorderLevel,this.Dis=data2.Discontinued;
+    console.log(data2);
      })
      
   }
