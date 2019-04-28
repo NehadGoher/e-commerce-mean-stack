@@ -8,21 +8,18 @@ import Product from '../product';
 })
 export class HomeComponent implements OnInit {
 
-  //keyword="";
+  key="";
   constructor(private PService:ProductServiceService) { }
 
   ngOnInit() {
   }
 productobj:Product;
-  getKeyword(keyword){
+  getProductFrom(keyword){
+    this.key = keyword;
     console.log(keyword);
     this.PService
     .getProduct(keyword)
-    .subscribe((data :Product) => {
-      this.productobj=data;
-      console.log("hii");
-     console.log(this.productobj);
-  });
+   
     
   }
 

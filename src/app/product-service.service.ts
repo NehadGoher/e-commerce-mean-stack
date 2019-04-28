@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
 export class ProductServiceService {
 
   uri = 'http://localhost:7000';
+  products :any= [];
 
   constructor(private http: HttpClient) { }
 
@@ -20,12 +21,16 @@ export class ProductServiceService {
     this.http.post(`${this.uri}/add`, obj)
         .subscribe(res => console.log('Done'));
   }*/
+  key;
   getProduct(keyword)
   {
-    return this.http.get(`${this.uri}`+"/products/"+keyword);
+    this.key = keyword;
+    console.log("Keeeey" +this.key);
+    return this.http.get(`${this.uri}`+"/products/"+keyword)
   }
   getProducts()
   {
+
     return this.http.get(`${this.uri}`+"/products");
 
   }
@@ -35,5 +40,10 @@ export class ProductServiceService {
       console.log("doneeee");
     });
 
+  }
+
+  getProp(){
+    console.log("proop" +this.key);
+    return this.http.get(`${this.uri}`+"/products/"+this.key);
   }
 }
