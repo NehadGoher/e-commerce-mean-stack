@@ -1,16 +1,20 @@
 
-<div>Productssssss</div>
-<div class="col-12 row" >
-  <div >
-      <span class="card offset-1 col -3" *ngFor="let item of products">
-    
-          <span class="card-body">
-            <h4>{{item.ProductName}}</h4>
-            <span>{{item.UnitPrice}}</span>
-            <span>{{item.UnitsInStock}}</span>
-            <input type="button" value="add to cart" (click)="addToCart(item.ProductID)">
-          </span>
-      </span>
+<div class="col-12 row" id="body">
+  <div *ngFor="let item of products" class="offset-1 col -5">
+    <div class="card col-12">
+
+      <div class="card-body">
+        <div>
+          <h4 #itm>{{item.ProductName}}</h4>
+          <div>{{item.UnitPrice}} $</div>
+          <div>{{item.UnitsInStock}} in stock</div>
+        </div>
+        <form method="PUT">
+            <input type="button" value="add to cart" (click)="addCart(item.ProductName)" class="btn btn-light">
+        </form>
+        
+      </div>
+    </div>
   </div>
- 
+
 </div>

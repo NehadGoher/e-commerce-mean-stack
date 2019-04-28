@@ -11,7 +11,7 @@ export class ProductServiceService {
 
   constructor(private http: HttpClient) { }
 
-key; 
+key =""; 
   getProduct(keyword)
   {
     this.key = keyword;
@@ -45,4 +45,6 @@ key;
     return this.http.get(`${this.uri}`+"/products/"+this.key);
 
   }
+
+  
 }

@@ -30,7 +30,7 @@ app.get('/products/:pName',function(req,res){
         if (err) throw err;
         //console.log(result);
         res.send(result);
-        console.log("array")
+        
         //console.log(res)
         db.close();
       });
@@ -130,15 +130,21 @@ app.get('/products',function(req,res){
 app.put('/product/:PId',function(req,res){
   mongo.connect(url, function(err, db) {
       if (err) throw err;
-    var dbo = db.db("OnlineShopping");
-   // var dbo = db.db("e-commerce");
-console.log(req.body);
+   // var dbo = db.db("OnlineShopping");
+    var dbo = db.db("e-commerce");
+
+console.log("update in server");
+//console.log(req.body);
     var updatedProduct = {ProductID:req.body.ProductID, ProductName: req.body.ProductName, SupplierID: req.body.SupplierID,CategoryID:req.body.CategoryID,
       QuantityPerUnit:req.body.QuantityPerUnit
     ,UnitPrice:parseFloat(req.body.UnitPrice),UnitsInStock:req.body.UnitsInStock,UnitsOnOrder:req.body.UnitsOnOrder,
     ReorderLevel:req.body.ReorderLevel,Discontinued:req.body.Discontinued};
-    console.log(updatedProduct);
-    console.log(req.body.ProductID);
+    console.log("updated");
+    console.log(req.body);
+    // console.log(updatedProduct);
+    // console.log(req.body.ProductID);
+    console.log(ObjectMongo(req.params.PId));
+    //_id
     dbo.collection("products").findOneAndUpdate({"_id":ObjectMongo(req.params.PId)},{$set :updatedProduct} , function(err, result) {
       if (err) throw err;
       console.log("update product done");
@@ -147,12 +153,15 @@ console.log(req.body);
   });
 });
 
+//update unitInStock
+
+
 //delete product
 app.delete('/product/:PId',function(req,res){
   mongo.connect(url, function(err, db) {
       if (err) throw err;
-    var dbo = db.db("OnlineShopping");
-   // var dbo = db.db("e-commerce");
+    //var dbo = db.db("OnlineShopping");
+    var dbo = db.db("e-commerce");
    console.log(req.params.PId);
 
     dbo.collection("products").findOneAndDelete({"_id":ObjectMongo(req.params.PId)}, function(err, result) {

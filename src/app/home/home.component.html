@@ -6,6 +6,6 @@
     <h1>Online shopping</h1>
   <input type="text" class="form-control offset-2 col-8 "  placeholder="search for products" #_keyword>
   <a type="button" id="sub"  class="btn btn-light col-2" (click)="getProductFrom(_keyword.value)" routerLink="../Product"> Search by product</a>
-  <input type="button" id="sub" value="Search by category" class="btn btn-light col-2" (click)="getCategory(_keyword.value)" >
+  <input type="button" id="sub" value="Search by category" class="btn btn-light col-2 offset-1" (click)="getCategory(_keyword.value)" >
 </form>
 
