@@ -1,0 +1,61 @@
+
+ <div>
+  <h1>Order</h1>
+
+  
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        
+        <th scope="col">ProductName</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th>
+            <form method="POST">
+          <a class="btn btn-success" (click)="buyOrder()">Buy Order</a>
+        </form>
+      </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cart" class="col-12">
+        
+        <td>{{item.ProductName}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.price*item.quantity}}</td>
+        <td>
+          <form method="PUT">
+              <a class="btn btn-success" (click)="removeProduct(item.ProductName,item.quantity)">remove Product</a>
+          </form>
+         
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+ </div>
+<!-- 
+<div class="modal fade right" id="sideModalTR" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+
+<div class="modal-dialog modal-side modal-top-right " role="document">
+
+
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title w-100" id="myModalLabel">Cart Details</h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+     
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
+    </div>
+  </div>
+</div>
+</div> -->

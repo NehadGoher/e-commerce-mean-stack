@@ -19,6 +19,7 @@ export class ProductsComponent implements OnInit {
     this.load();
   }
 
+   
   load(){
     this.PService.getProp().subscribe(data=>{
       this.products = data;

@@ -1,4 +1,10 @@
+
+import { Injectable } from '@angular/core';
+@Injectable({
+  providedIn: 'root'
+})
 export default class Product {
+  _id:String;
     ProductName: String;
     SupplierID: Number;
     CategoryID:Number;
@@ -9,4 +15,6 @@ export default class Product {
     ReorderLevel:Number;
     Discontinued:Number;
 
+
+    
   }

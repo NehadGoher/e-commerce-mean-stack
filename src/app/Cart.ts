@@ -28,8 +28,11 @@ export  class Cart{
         else{
             
             let obj = {
+                ProductID:prod["ProductID"],
+                username:"nehad",
                 ProductName:prod["ProductName"],
-                quantity:num
+                quantity:num,
+                price:prod["UnitPrice"],
             };
             // console.log("obj");
             // console.log(obj);
@@ -64,7 +67,11 @@ export  class Cart{
         console.log("deleted");
     }
 
-    
+    removeProduct(prod){
+        
+        this.cartList.splice( this.cartList.findIndex(v => v.ProductName === prod["ProductName"]), 1);
+
+    }
     findIndex(prod){
         for (var i=0; i < this.cartList.length; i++) {
                 if (this.cartList[i].ProductName === prod) {
@@ -77,15 +84,15 @@ export  class Cart{
     search(prodName:string){
         let prod = null;
         if(prodName){
-            prodName = prodName.trim();
+            
             this.cartList.forEach(element => {
              // console.log("for")
              // console.log(element["ProductName"])
        
-             if(element["ProductName"].trim().includes(prodName) ){
+             if(element["ProductName"].includes(prodName) ){
                
                prod = element
-               console.log(prod)
+               //console.log(prod)
              }
            }
            );

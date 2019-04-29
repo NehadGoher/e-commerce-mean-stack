@@ -10,12 +10,8 @@ export class ProductServiceService {
   products :any= [];
 
   constructor(private http: HttpClient) { }
-<<<<<<< HEAD
 
 key =""; 
-=======
-key;
->>>>>>> d6464faa4b9ea2f7ab577a529539de92ad42e763
   getProduct(keyword)
   {
     this.key = keyword;
@@ -33,6 +29,7 @@ key;
   }
   updateProduct(obj,id)
   {
+   
     console.log("pservice",`${this.uri}/product/${id}`)
     return this.http.put(`${this.uri}/product/${id}`,obj);
   }
@@ -44,6 +41,12 @@ key;
     console.log("proop" +this.key);
     return this.http.get(`${this.uri}`+"/products/"+this.key);
 
+  }
+
+  addOrder(obj){
+    console.log("addOrder");
+    console.log(obj);
+    return this.http.post(`${this.uri}`+"/cart",obj);
   }
 
   
