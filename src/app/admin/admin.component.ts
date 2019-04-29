@@ -81,6 +81,7 @@ this.visible=1;
     ReorderLevel:this.RLevel,Discontinued:this.Dis};
     console.log("update");
     console.log(obj);
+    console.log(this.upProduct);
     this.PService.updateProduct(obj,this.upProduct).subscribe((data)=>{
     });
     console.log(this);
