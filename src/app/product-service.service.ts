@@ -12,6 +12,9 @@ export class ProductServiceService {
   constructor(private http: HttpClient) { }
 
 key =""; 
+
+valid=-1;
+validId;
   getProduct(keyword)
   {
     this.key = keyword;
@@ -48,6 +51,27 @@ key ="";
     console.log(obj);
     return this.http.post(`${this.uri}`+"/cart",obj);
   }
-
+  getuser(obj)
+  {
+    return this.http.get(`${this.uri}/user/${obj.email}/${obj.password}`,obj);
+     
+  }
+  getOrders(custId)
+  {
+    return this.http.get(`${this.uri}/order/${custId}`);
+  }
+  getOrderDetails(orderID)
+  {
+return this.http.get(`${this.uri}/orderDetails/${orderID}`);
+  }
+  loginOrNot(login,LoginId)
+  {
+     this.valid=login;
+     this.validId=LoginId;
+  }
+  getProductName(id)
+  {
+    return this.http.get(`${this.uri}/productName/id`);
+}
   
 }

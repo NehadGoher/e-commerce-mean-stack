@@ -16,7 +16,11 @@ import { ProductsComponent } from './products/products.component';
 import {ProductServiceService} from './product-service.service';
 import { AdminComponent } from './admin/admin.component';
 import {CategoryService} from './category.service';
+<<<<<<< HEAD
 import { CartComponent } from './cart/cart.component';
+=======
+import { OrdersComponent } from './orders/orders.component';
+>>>>>>> b7ae55da46db44e40a724aad168cf7ee3845c963
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { CartComponent } from './cart/cart.component';
     NotFoundComponent,
     ProductsComponent,
     AdminComponent,
+<<<<<<< HEAD
     CartComponent
+=======
+    OrdersComponent
+>>>>>>> b7ae55da46db44e40a724aad168cf7ee3845c963
   ],
   imports: [
     BrowserModule,
