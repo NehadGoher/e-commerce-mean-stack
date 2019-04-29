@@ -32,8 +32,8 @@ load()
   .subscribe((data :Product) => {
     this.products=data;
     this.index=this.products[this.products.length-1].ProductID;
-    console.log("hii");
-   console.log(this.products);
+  //   console.log("hii");
+  //  console.log(this.products);
 });
 }
   ngOnInit() {
@@ -44,8 +44,8 @@ load()
   }
   add()
   {
-    console.log("addd")
-    console.log(this.products.length);
+    // console.log("addd")
+    // console.log(this.products.length);
     var obj = {ProductID:this.index, ProductName:this.PName, SupplierID: this.SID,CategoryID:this.CID,
       QuantityPerUnit:this.Quantity
     ,UnitPrice:this.Price,UnitsInStock:this.UInStock,UnitsOnOrder:this.UOnOrder,
@@ -68,7 +68,7 @@ this.visible=1;
       this.Quantity=data2.QuantityPerUnit
     ,this.Price=data2.UnitPrice,this.UInStock=data2.UnitsInStock,this.UOnOrder=data2.UnitsOnOrder,
     this.RLevel=data2.ReorderLevel,this.Dis=data2.Discontinued;
-    console.log(data2);
+    // console.log(data2);
      })
      
   }
@@ -79,26 +79,26 @@ this.visible=1;
       QuantityPerUnit:this.Quantity
     ,UnitPrice:this.Price,UnitsInStock:this.UInStock,UnitsOnOrder:this.UOnOrder,
     ReorderLevel:this.RLevel,Discontinued:this.Dis};
-    console.log("update");
-    console.log(obj);
-    console.log(this.upProduct);
+    //console.log("update");
+    //console.log(obj);
+    //console.log(this.upProduct);
     this.PService.updateProduct(obj,this.upProduct).subscribe((data)=>{
       this.load();
       this.visible=1;
     });
-    console.log(this);
+    //console.log(this);
 
    
 
   }
   delete(id)
   {
-    console.log(id);
+    //console.log(id);
     this.PService.deleteProduct(id).subscribe( (data)=>{
     this.load();
       
     });
-    console.log("deleted");
-    console.log(this);
+    //console.log("deleted");
+    //console.log(this);
   }
 }

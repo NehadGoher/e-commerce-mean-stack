@@ -39,9 +39,9 @@ export  class Cart{
             this.cartList.push(obj);
         }
         
-        console.log("product add");
-        console.log("cart");
-        console.log(this.cartList);
+        // console.log("product add");
+        // console.log("cart");
+        // console.log(this.cartList);
 
     }
 
@@ -61,10 +61,10 @@ export  class Cart{
         else{
             this.cartList.splice( this.cartList.findIndex(v => v.ProductName === idx["ProductName"]), 1);
         }
-        //someArray3.splice(someArray3.findIndex(v => v.name === "Kristian"), 1);
         
-        console.log( idx);
-        console.log("deleted");
+        
+        // console.log( idx);
+        // console.log("deleted");
     }
 
     removeProduct(prod){
