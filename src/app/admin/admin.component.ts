@@ -72,7 +72,8 @@ this.visible=1;
      })
      
   }
-  updateProduct()
+
+  updateProduct=()=>
   {
     var obj = {ProductID:this.Pid, ProductName:this.PName, SupplierID: this.SID,CategoryID:this.CID,
       QuantityPerUnit:this.Quantity
@@ -82,8 +83,10 @@ this.visible=1;
     console.log(obj);
     this.PService.updateProduct(obj,this.upProduct).subscribe((data)=>{
     });
-    this.visible=1;
+    console.log(this);
+
     this.load();
+    this.visible=1;
 
   }
   delete(id)
@@ -93,6 +96,7 @@ this.visible=1;
       
     });
     console.log("deleted");
+    console.log(this);
     this.load();
   }
 }

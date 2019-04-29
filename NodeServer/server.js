@@ -57,13 +57,13 @@ app.get('/categories/:CName',function(req,res){
 
 //get Order
 var OrderNo=10250;
-app.get('/order/:orderID',function(req,res){
+app.get('/order/:custID',function(req,res){
     mongo.connect(url, function(err, db) {
         if (err) throw err;
       var dbo = db.db("OnlineShopping");
      // var dbo = db.db("e-commerce");
 
-      dbo.collection("orders").findOne({"OrderID":req.params.orderID}, function(err, result) {
+      dbo.collection("orders").find({"CustomerID":req.params.custID}).toArray( function(err, result) {
         if (err) throw err;
       res.send(result);
         console.log(result);
@@ -81,7 +81,7 @@ app.get('/orderDetails/:orderID',function(req,res){
       var dbo = db.db("OnlineShopping");
      // var dbo = db.db("e-commerce");
 
-      dbo.collection("order-details").find({"OrderID":req.params.orderID}).toArray(function(err, result) {
+      dbo.collection("order-details").find({"OrderID":parseInt( req.params.orderID)}).toArray(function(err, result) {
         if (err) throw err;
       res.send(result);
         console.log(result);
@@ -95,7 +95,7 @@ app.post('/product',function(req,res){
     mongo.connect(url, function(err, db) {
         if (err) throw err;
       var dbo = db.db("OnlineShopping");
-     // var dbo = db.db("e-commerce");
+      //var dbo = db.db("e-commerce");
 
       var newProduct = {ProductID:req.body.ProductID, ProductName: req.body.ProductName, SupplierID: req.body.SupplierID,CategoryID:req.body.CategoryID,
         QuantityPerUnit:req.body.QuantityPerUnit
@@ -105,6 +105,7 @@ app.post('/product',function(req,res){
       dbo.collection("products").insertOne(newProduct , function(err, result) {
         if (err) throw err;
         console.log("new product added");
+      res.send(result);
         db.close();
       });
     });
@@ -114,8 +115,8 @@ app.post('/product',function(req,res){
 app.get('/products',function(req,res){
   mongo.connect(url, function(err, db) {
       if (err) throw err;
-    var dbo = db.db("OnlineShopping");
-   //   var dbo = db.db("e-commerce");
+      var dbo = db.db("OnlineShopping");
+      //var dbo = db.db("e-commerce");
 
     dbo.collection("products").find({}).toArray(function(err, result) {
       if (err) throw err;
@@ -130,8 +131,8 @@ app.get('/products',function(req,res){
 app.put('/product/:PId',function(req,res){
   mongo.connect(url, function(err, db) {
       if (err) throw err;
-   // var dbo = db.db("OnlineShopping");
-    var dbo = db.db("e-commerce");
+    var dbo = db.db("OnlineShopping");
+   // var dbo = db.db("e-commerce");
 console.log(req.body);
     var updatedProduct = {ProductID:req.body.ProductID, ProductName: req.body.ProductName, SupplierID: req.body.SupplierID,CategoryID:req.body.CategoryID,
       QuantityPerUnit:req.body.QuantityPerUnit
@@ -142,6 +143,8 @@ console.log(req.body);
     dbo.collection("products").findOneAndUpdate({"_id":ObjectMongo(req.params.PId)},{$set :updatedProduct} , function(err, result) {
       if (err) throw err;
       console.log("update product done");
+      res.send(result);
+
       db.close();
     });
   });
@@ -151,15 +154,51 @@ console.log(req.body);
 app.delete('/product/:PId',function(req,res){
   mongo.connect(url, function(err, db) {
       if (err) throw err;
-   // var dbo = db.db("OnlineShopping");
-    var dbo = db.db("e-commerce");
+    var dbo = db.db("OnlineShopping");
+   // var dbo = db.db("e-commerce");
    console.log(req.params.PId);
 
     dbo.collection("products").findOneAndDelete({"_id":ObjectMongo(req.params.PId)}, function(err, result) {
       if (err) throw err;
       //console.log(result);
+      res.send(result);
       console.log("delete product done");
       db.close();
     });
   });
+});
+//check user
+app.get('/user/:email/:password',function(req,res){
+  mongo.connect(url, function(err, db) {
+      if (err) throw err;
+    var dbo = db.db("OnlineShopping");
+   // var dbo = db.db("e-commerce");
+   //console.log(req.body.email);
+
+    dbo.collection("LoginInfo").findOne({"email":req.params.email,"password":req.params.password}, function(err, result) {
+      if (err) throw err;
+      //console.log(result);
+      res.send(result);
+      db.close();
+    });
+  });
+});
+ //get product name
+ app.get('/productName/:pId',function(req,res){
+  var data="";
+  mongo.connect(url, function(err, db) {
+    
+      if (err) throw err;
+    var dbo = db.db("OnlineShopping");
+   // var dbo = db.db("e-commerce");
+    dbo.collection("products").find({"ProductID":req.params.pId}).toArray( function(err, result) {
+      if (err) throw err;
+      //console.log(result);
+      res.send(result);
+      console.log("array")
+      //console.log(res)
+      db.close();
+    });
+  });
+  
 });

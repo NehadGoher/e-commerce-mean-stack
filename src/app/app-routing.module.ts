@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {AdminComponent} from './admin/admin.component';
 import { ProductsComponent } from './products/products.component';
+import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
 
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   {path: 'admin',component:AdminComponent},
   {path: 'Product',component:ProductsComponent},
-  
+  {path:"Orders",component:OrdersComponent},
   { path: '**', component: NotFoundComponent },
   
 ];

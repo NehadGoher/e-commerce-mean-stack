@@ -16,6 +16,7 @@ import { ProductsComponent } from './products/products.component';
 import {ProductServiceService} from './product-service.service';
 import { AdminComponent } from './admin/admin.component';
 import {CategoryService} from './category.service';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {CategoryService} from './category.service';
     RegisterComponent,
     NotFoundComponent,
     ProductsComponent,
-    AdminComponent
+    AdminComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
