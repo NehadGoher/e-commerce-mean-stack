@@ -51,11 +51,11 @@ load()
     ,UnitPrice:this.Price,UnitsInStock:this.UInStock,UnitsOnOrder:this.UOnOrder,
     ReorderLevel:this.RLevel,Discontinued:this.Dis};
 this.PService.addProduct(obj).subscribe((data)=>{
-  
+  this.load();
+this.visible=1;
 
 });
-this.load();
-this.visible=1;
+
   }
   update(prodId,prodName,id)
   {
@@ -83,21 +83,22 @@ this.visible=1;
     console.log(obj);
     console.log(this.upProduct);
     this.PService.updateProduct(obj,this.upProduct).subscribe((data)=>{
+      this.load();
+      this.visible=1;
     });
     console.log(this);
 
-    this.load();
-    this.visible=1;
+   
 
   }
   delete(id)
   {
     console.log(id);
-    this.PService.deleteProduct(id).subscribe(function (data){
+    this.PService.deleteProduct(id).subscribe( (data)=>{
+    this.load();
       
     });
     console.log("deleted");
     console.log(this);
-    this.load();
   }
 }

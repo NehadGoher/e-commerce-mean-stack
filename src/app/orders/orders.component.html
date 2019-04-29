@@ -1,25 +1,20 @@
 
 <div *ngIf="valid==1" >
-  <div *ngFor="let i of ordersNo">
-  <p>order Number: {{i.OrderID}}</p>
   <table class="table">
     <thead>
       <tr class="d-flex row">
-        <th class="col-2">ProductID</th>
-        <th class="col-2">UnitPrice</th>
+        <th class="col-2">ProductName</th>
         <th class="col-2">Quantity</th>
-        <th class="col-2">Discount</th>
+        <th class="col-2">Price</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let j of ordersInfo[i.OrderID]" class="d-flex row">
-        <td class="col-2">{{j.ProductID}}</td>
-        <td class="col-2">{{j.UnitPrice}}</td>
-        <td class="col-2">{{j.Quantity}}</td>
-        <td class="col-2">{{j.Discount}}</td>
-
+      <tr *ngFor="let j of ordersInfo" class="d-flex row">
+        <td class="col-2">{{j.ProductName}}</td>
+        <td class="col-2">{{j.quantity}}</td>
+        <td class="col-2">{{j.price}}</td>
+       <td> <input type="button" class="btn btn-light" value="ReOrder" (click)="addCart(j.ProductName)"></td>
       </tr>
     </tbody>
   </table>
-</div>
 </div>

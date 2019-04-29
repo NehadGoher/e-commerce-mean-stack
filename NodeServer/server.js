@@ -24,8 +24,8 @@ app.get('/products/:pName',function(req,res){
     mongo.connect(url, function(err, db) {
       
         if (err) throw err;
-      //var dbo = db.db("OnlineShopping");
-      var dbo = db.db("e-commerce");
+      var dbo = db.db("OnlineShopping");
+      //var dbo = db.db("e-commerce");
       dbo.collection("products").find({"ProductName":req.params.pName}).toArray( function(err, result) {
         if (err) throw err;
         //console.log(result);
@@ -75,13 +75,13 @@ app.get('/order/:custID',function(req,res){
 
 
 //get Order Details  ---list of products in this order
-app.get('/orderDetails/:orderID',function(req,res){
+app.get('/orderDetails/:username',function(req,res){
     mongo.connect(url, function(err, db) {
         if (err) throw err;
       var dbo = db.db("OnlineShopping");
      // var dbo = db.db("e-commerce");
 
-      dbo.collection("order-details").find({"OrderID":parseInt( req.params.orderID)}).toArray(function(err, result) {
+      dbo.collection("carts").find({"username":req.params.username}).toArray(function(err, result) {
         if (err) throw err;
       res.send(result);
         console.log(result);
@@ -115,8 +115,8 @@ app.post('/product',function(req,res){
 app.get('/products',function(req,res){
   mongo.connect(url, function(err, db) {
       if (err) throw err;
-    //var dbo = db.db("OnlineShopping");
-      var dbo = db.db("e-commerce");
+    var dbo = db.db("OnlineShopping");
+     // var dbo = db.db("e-commerce");
 
     dbo.collection("products").find({}).toArray(function(err, result) {
       if (err) throw err;
@@ -135,7 +135,7 @@ app.put('/product/:PId',function(req,res){
     var dbo = db.db("OnlineShopping");
    // var dbo = db.db("e-commerce");
    // var dbo = db.db("OnlineShopping");
-    var dbo = db.db("e-commerce");
+    //var dbo = db.db("e-commerce");
 
 console.log("update in server");
 //console.log(req.body);
@@ -171,8 +171,8 @@ app.delete('/product/:PId',function(req,res){
   mongo.connect(url, function(err, db) {
       if (err) throw err;
 
-    //var dbo = db.db("OnlineShopping");
-    var dbo = db.db("e-commerce");
+    var dbo = db.db("OnlineShopping");
+    //var dbo = db.db("e-commerce");
    console.log(req.params.PId);
 
     dbo.collection("products").findOneAndDelete({"_id":ObjectMongo(req.params.PId)}, function(err, result) {
@@ -192,8 +192,8 @@ app.post('/cart',function(req,res){
   console.log("post cart");
   mongo.connect(url, function(err, db) {
       if (err) throw err;
-    //var dbo = db.db("OnlineShopping");
-    var dbo = db.db("e-commerce");
+    var dbo = db.db("OnlineShopping");
+    //var dbo = db.db("e-commerce");
     console.log("req.body");
     console.log(req.body);
     var newCart = req.body;
@@ -216,7 +216,7 @@ app.get('/user/:email/:password',function(req,res){
    // var dbo = db.db("e-commerce");
    //console.log(req.body.email);
 
-    dbo.collection("LoginInfo").findOne({"email":req.params.email,"password":req.params.password}, function(err, result) {
+    dbo.collection("logins").findOne({"email":req.params.email,"password":req.params.password}, function(err, result) {
       if (err) throw err;
       //console.log(result);
       res.send(result);
@@ -242,4 +242,22 @@ app.get('/user/:email/:password',function(req,res){
     });
   });
   
+});
+
+//register
+app.post('/login',function(req,res){
+  mongo.connect(url, function(err, db) {
+      if (err) throw err;
+    var dbo = db.db("OnlineShopping");
+    //var dbo = db.db("e-commerce");
+
+    var newUser = {email:req.body.email, password: req.body.password, username: req.body.username};
+    console.log(newUser);
+    dbo.collection("logins").insertOne(newUser , function(err, result) {
+      if (err) throw err;
+      console.log("new user added");
+    res.send(result);
+      db.close();
+    });
+  });
 });

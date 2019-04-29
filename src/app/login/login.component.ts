@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
        this.router.navigate(["admin"]);
     else
     {
-      this.PService.loginOrNot(1,this.user.customerId);
+      this.PService.loginOrNot(1,this.user.username);
        this.router.navigate(["Product"]);
     }
   }

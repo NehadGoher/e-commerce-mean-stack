@@ -7,6 +7,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {AdminComponent} from './admin/admin.component';
 import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
+import { OrdersComponent } from './orders/orders.component';
 const routes: Routes = [
 
   { path: 'Login', component: LoginComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'admin',component:AdminComponent},
   {path: 'Product',component:ProductsComponent},
   {path: 'Cart',component:CartComponent},
+  {path:'Orders',component:OrdersComponent},
   
   { path: '**', component: NotFoundComponent },
   

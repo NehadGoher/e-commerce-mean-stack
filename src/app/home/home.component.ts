@@ -19,8 +19,6 @@ productobj:Product;
     console.log(keyword);
     this.PService
     .getProduct(keyword)
-   
-    
   }
 
 }

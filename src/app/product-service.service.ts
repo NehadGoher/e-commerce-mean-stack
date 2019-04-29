@@ -14,7 +14,7 @@ export class ProductServiceService {
 key =""; 
 
 valid=-1;
-validId;
+validname;
   getProduct(keyword)
   {
     this.key = keyword;
@@ -60,18 +60,22 @@ validId;
   {
     return this.http.get(`${this.uri}/order/${custId}`);
   }
-  getOrderDetails(orderID)
+  getOrderDetails(username)
   {
-return this.http.get(`${this.uri}/orderDetails/${orderID}`);
+return this.http.get(`${this.uri}/orderDetails/${username}`);
   }
-  loginOrNot(login,LoginId)
+  loginOrNot(login,Loginname)
   {
      this.valid=login;
-     this.validId=LoginId;
+     this.validname=Loginname;
   }
   getProductName(id)
   {
     return this.http.get(`${this.uri}/productName/id`);
+}
+registerUser(obj)
+{
+  return this.http.post(`${this.uri}/login`,obj);
 }
   
 }
