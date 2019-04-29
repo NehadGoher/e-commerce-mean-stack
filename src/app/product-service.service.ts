@@ -10,17 +10,15 @@ export class ProductServiceService {
   products :any= [];
 
   constructor(private http: HttpClient) { }
-<<<<<<< HEAD
+
 
 key =""; 
-=======
-key;
-<<<<<<< HEAD
+
+
 valid=-1;
 validId;
-=======
->>>>>>> d6464faa4b9ea2f7ab577a529539de92ad42e763
->>>>>>> 51bb54d9e1bf6c2753bfed272e096e7904004cad
+
+
   getProduct(keyword)
   {
     this.key = keyword;
@@ -50,7 +48,6 @@ validId;
     return this.http.get(`${this.uri}`+"/products/"+this.key);
 
   }
-<<<<<<< HEAD
   getuser(obj)
   {
     return this.http.get(`${this.uri}/user/${obj.email}/${obj.password}`,obj);
@@ -73,8 +70,4 @@ return this.http.get(`${this.uri}/orderDetails/${orderID}`);
   {
     return this.http.get(`${this.uri}/productName/id`);
   }
-=======
-
-  
->>>>>>> 51bb54d9e1bf6c2753bfed272e096e7904004cad
 }
