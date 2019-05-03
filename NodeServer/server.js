@@ -15,7 +15,7 @@ app.use(express.urlencoded());
 port=process.env.PORT ||7000;
 app.listen(port);
 app.use(cors());
-console.log(port);
+//console.log(port);
 var url = "mongodb://localhost:27017/";
 // Search by Product Name
 
@@ -261,10 +261,10 @@ app.post('/login',function(req,res){
     //var dbo = db.db("e-commerce");
 
     var newUser = {email:req.body.email, password: req.body.password, username: req.body.username};
-    console.log(newUser);
+    //console.log(newUser);
     dbo.collection("logins").insertOne(newUser , function(err, result) {
       if (err) throw err;
-      console.log("new user added");
+      //console.log("new user added");
     res.send(result);
       db.close();
     });

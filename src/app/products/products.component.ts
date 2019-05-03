@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   constructor(private PService:ProductServiceService, private cart:Cart) { 
    // this.products = this.PService.getProp();
 
-    console.log("ctor");
+    //console.log("ctor");
     this.load();
   }
 
@@ -23,7 +23,7 @@ export class ProductsComponent implements OnInit {
   load(){
     this.PService.getProp().subscribe(data=>{
       this.products = data;
-      console.log(data);
+      //console.log(data);
     })
   }
   ngOnInit() {
@@ -34,7 +34,7 @@ export class ProductsComponent implements OnInit {
   }
 
   addCart(prodName){
-    console.log(prodName);
+    //console.log(prodName);
     var index = this.search(prodName);
     // console.log("index");
     // console.log(index);
@@ -44,8 +44,8 @@ export class ProductsComponent implements OnInit {
       index["UnitsInStock"] -= 1;
 
       this.PService.updateProduct(index,index["_id"]).subscribe((data)=>{
-        console.log("update")
-        console.log(data)
+        // console.log("update")
+        // console.log(data)
       });
     }
 
@@ -62,7 +62,7 @@ export class ProductsComponent implements OnInit {
       if(element["ProductName"].trim().includes(prodName) ){
         
         prod = element
-        console.log(prod)
+        //console.log(prod)
       }
     }
     );

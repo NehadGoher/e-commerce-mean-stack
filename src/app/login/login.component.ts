@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
         else
         alert("Error in email or password");
     });
-    //console.log(_email + " "+ _password);
   }
   login(){
     if(this.user.email=="admin@admin.com"&&this.user.password=="123456")

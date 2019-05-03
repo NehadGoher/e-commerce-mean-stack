@@ -11,9 +11,9 @@ import {Cart} from '../Cart'
 export class CartComponent implements OnInit {
   cart:any =[]
   constructor(private PService:ProductServiceService, private cartObj:Cart, private prodt:Product) { 
-    console.log("ctor")
+    //console.log("ctor")
     this.cart =cartObj.getCart();
-    console.log(this.cart);
+    //console.log(this.cart);
   }
 
   ngOnInit() {
@@ -21,17 +21,17 @@ export class CartComponent implements OnInit {
   }
 
   buyOrder(){
-    console.log("buy");
+    //console.log("buy");
     //pservice   don't have time to make service for cart
     this.PService.addOrder(this.cart).subscribe(data=>{
       
-      console.log(data);
+      //console.log(data);
     });
   }
   removeProduct(prodName,quantity){
     ///////////Bug
     /// need to get the whole product
-    //console.log(prodName);
+    ////console.log(prodName);
     // let prod = this.cartObj.search(prodName);
     // console.log("removeProduct");
     // console.log(prod);
