@@ -6,11 +6,19 @@
     <li class="nav-item active">
       <a class="nav-link"  routerLink="Product" >Products</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="login == ''">
       <a class="nav-link" routerLink="Login">Login</a>
     </li>
-    <li class="nav-item">
+
+    <li class="nav-item" *ngIf="login != ''">
+      <a class="nav-link" >{{login}}</a>
+    </li>
+    
+    <li class="nav-item" *ngIf="login == ''">
       <a class="nav-link" routerLink="Register">Register</a>
+    </li>
+    <li class="nav-item" *ngIf="login != ''">
+      <a class="nav-link" routerLink="Login">Logout</a>
     </li>
     <li id="cart">
       <!-- <a  class="btn btn-light btn-lg" data-toggle="modal" data-target="#sideModalTR" >

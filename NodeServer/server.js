@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
 })); 
 app.use(express.json());       
 app.use(express.urlencoded());
-port=7000;
+port=process.env.PORT ||7000;
 app.listen(port);
 app.use(cors());
 console.log(port);
@@ -29,8 +29,17 @@ app.get('/products/:pName',function(req,res){
       dbo.collection("products").find({"ProductName":req.params.pName}).toArray( function(err, result) {
         if (err) throw err;
         //console.log(result);
+        /*var x=result;
+        dbo.collection("categories").findOne({CategoryID:result[0].CategoryID},(err2,result2)=>{
+          console.log(result2.CategoryName);
+          result[0].cat=result2;
+          
+        console.log(x);
         res.send(result);
-        
+
+        })*/
+        res.send(result);
+
         //console.log(res)
         db.close();
       });
