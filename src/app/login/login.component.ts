@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   validuser=0;
   url="http://localhost:4200/Product";
   constructor(private PService:ProductServiceService,private router: Router) {
-    
+    this.PService.loginOrNot(-1,"");
      }
 
   ngOnInit() {

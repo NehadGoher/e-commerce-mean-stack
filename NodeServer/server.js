@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
 })); 
 app.use(express.json());       
 app.use(express.urlencoded());
-var port= process.env.PORT || 7000;
+port=process.env.PORT ||7000;
 app.listen(port);
 app.use(cors());
 //console.log(port);
@@ -32,13 +32,16 @@ app.get('/products/:pName',function(req,res){
         console.log("result");
         console.log(result);
         res.send(result);
-        
+
+        })
+        res.send(result);
+
         //console.log(res)
         db.close();
       });
     });
     
-});
+
 
 // Search by Category
 app.get('/categories/:CName',function(req,res){

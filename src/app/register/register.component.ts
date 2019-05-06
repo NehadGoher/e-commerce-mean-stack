@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   getInfo(email,pass,user)
   {
     var obj={"email":email,"password":pass,"username":user};
+    this.PService.loginOrNot(1,user);
     this.PService.registerUser(obj).subscribe((data)=>{
       this.router.navigate(["Product"]);     
     });

@@ -5,21 +5,22 @@ import { from } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoryService {
-  uri = 'http://localhost:7000';
+  uri = 'http://localhost:7000/';
+  //uri="";
   constructor(private http: HttpClient) { }
 
   getcategory(keyword)
   {
-    return this.http.get(`${this.uri}`+"/categories/"+keyword);
+    return this.http.get(`${this.uri}`+"categories/"+keyword);
   }
   getcategories()
   {
-    return this.http.get(`${this.uri}`+"/categories");
+    return this.http.get(`${this.uri}`+"categories");
 
   }
   addcategory(obj)
   {
-    return this.http.post(`${this.uri}/category`,obj).subscribe(res=>{
+    return this.http.post(`${this.uri}category`,obj).subscribe(res=>{
       console.log("doneeee");
     });
 
