@@ -19,11 +19,16 @@ export class ProductsComponent implements OnInit {
     this.load();
   }
 
-   
+   clicked = {};
+   prodClicked(prodName){
+    this.clicked =this.search(prodName);
+    console.log(this.clicked);
+   }
   load(){
-    this.PService.getProp().subscribe(data=>{
+    this.PService.getProducts().subscribe(data=>{
       this.products = data;
-      //console.log(data);
+      console.log(data);
+      console.log("Loaded");
     })
   }
   ngOnInit() {
@@ -33,19 +38,20 @@ export class ProductsComponent implements OnInit {
    
   }
 
-  addCart(prodName){
+  addCart(prodName,quantity){
     //console.log(prodName);
     var index = this.search(prodName);
     // console.log("index");
     // console.log(index);
-    if(index &&index["UnitsInStock"] !=0){
+    if(index &&index["UnitsInStock"] >=quantity){
       //console.log(index["UnitsInStock"])
-      this.cart.addToCart(index);
-      index["UnitsInStock"] -= 1;
+      this.cart.addToCart(index,quantity);
+      index["UnitsInStock"] -= quantity;
 
       this.PService.updateProduct(index,index["_id"]).subscribe((data)=>{
         // console.log("update")
         // console.log(data)
+        this.load();
       });
     }
 

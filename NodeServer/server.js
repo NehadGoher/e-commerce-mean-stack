@@ -22,13 +22,15 @@ var url = "mongodb://localhost:27017/";
 app.get('/products/:pName',function(req,res){
     var data="";
     mongo.connect(url, function(err, db) {
+      console.log("get product");
       
         if (err) throw err;
-      var dbo = db.db("OnlineShopping");
-      //var dbo = db.db("e-commerce");
+     // var dbo = db.db("OnlineShopping");
+      var dbo = db.db("e-commerce");
       dbo.collection("products").find({"ProductName":req.params.pName}).toArray( function(err, result) {
         if (err) throw err;
-        //console.log(result);
+        console.log("result");
+        console.log(result);
         res.send(result);
         
         //console.log(res)
@@ -94,8 +96,8 @@ app.get('/orderDetails/:username',function(req,res){
 app.post('/product',function(req,res){
     mongo.connect(url, function(err, db) {
         if (err) throw err;
-      var dbo = db.db("OnlineShopping");
-      //var dbo = db.db("e-commerce");
+      //var dbo = db.db("OnlineShopping");
+    var dbo = db.db("e-commerce");
 
       var newProduct = {ProductID:req.body.ProductID, ProductName: req.body.ProductName, SupplierID: req.body.SupplierID,CategoryID:req.body.CategoryID,
         QuantityPerUnit:req.body.QuantityPerUnit
@@ -115,8 +117,8 @@ app.post('/product',function(req,res){
 app.get('/products',function(req,res){
   mongo.connect(url, function(err, db) {
       if (err) throw err;
-    var dbo = db.db("OnlineShopping");
-     // var dbo = db.db("e-commerce");
+    //var dbo = db.db("OnlineShopping");
+      var dbo = db.db("e-commerce");
 
     dbo.collection("products").find({}).toArray(function(err, result) {
       if (err) throw err;
@@ -132,8 +134,8 @@ app.put('/product/:PId',function(req,res){
   mongo.connect(url, function(err, db) {
       if (err) throw err;
 
-    var dbo = db.db("OnlineShopping");
-   // var dbo = db.db("e-commerce");
+    //var dbo = db.db("OnlineShopping");
+    var dbo = db.db("e-commerce");
    // var dbo = db.db("OnlineShopping");
     //var dbo = db.db("e-commerce");
 
@@ -171,8 +173,8 @@ app.delete('/product/:PId',function(req,res){
   mongo.connect(url, function(err, db) {
       if (err) throw err;
 
-    var dbo = db.db("OnlineShopping");
-    //var dbo = db.db("e-commerce");
+   // var dbo = db.db("OnlineShopping");
+    var dbo = db.db("e-commerce");
    console.log(req.params.PId);
 
     dbo.collection("products").findOneAndDelete({"_id":ObjectMongo(req.params.PId)}, function(err, result) {
@@ -192,8 +194,8 @@ app.post('/cart',function(req,res){
   console.log("post cart");
   mongo.connect(url, function(err, db) {
       if (err) throw err;
-    var dbo = db.db("OnlineShopping");
-    //var dbo = db.db("e-commerce");
+    //var dbo = db.db("OnlineShopping");
+    var dbo = db.db("e-commerce");
     console.log("req.body");
     console.log(req.body);
     var newCart = req.body;

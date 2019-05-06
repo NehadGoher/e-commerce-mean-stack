@@ -14,10 +14,10 @@ export class ProductServiceService {
 key =""; 
 
 valid=-1;
-validname;
+validname = "";
   getProduct(keyword)
   {
-    this.key = keyword;
+    //this.key = keyword;
     return this.http.get(`${this.uri}`+"/products/"+keyword);
   }
   getProducts()

@@ -2,19 +2,48 @@
 <div class="col-12 row" id="body">
   <div *ngFor="let item of products" class="offset-1 col -5">
     <div class="card col-12">
-
+      <img class="card-img-top w-50 offset-3" src="../../assets/images/product.jpg" alt="Card image">
       <div class="card-body">
         <div>
-          <h4 #itm>{{item.ProductName}}</h4>
+          <h4 >{{item.ProductName}}</h4>
           <div>{{item.UnitPrice}} $</div>
           <div>{{item.UnitsInStock}} in stock</div>
         </div>
-        <form method="PUT">
-            <input type="button" value="add to cart" (click)="addCart(item.ProductName)" class="btn btn-light">
-        </form>
+        
+            <input type="button" value="add to cart"  class="btn btn-light" data-toggle="modal" data-target="#sideModalTR" (click) = prodClicked(item.ProductName)>
+        
         
       </div>
     </div>
   </div>
 
+</div>
+
+
+<div class="modal fade right" id="sideModalTR" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+
+<div class="modal-dialog modal-side modal-top-right " role="document">
+
+
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title w-100" id="myModalLabel">Product info</h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" ng-model="clicked">
+      <h4 >{{clicked.ProductName}}</h4>
+      <div>{{clicked.UnitPrice}} $</div>
+      <input type="number" #quantity min="0" max={{clicked.UnitsInStock}}>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <form method="PUT">
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addCart(clicked.ProductName,quantity.value)">buy</button>
+    </form>
+    </div>
+  </div>
+</div>
 </div>

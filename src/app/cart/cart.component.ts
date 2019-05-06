@@ -30,11 +30,26 @@ export class CartComponent implements OnInit {
   }
   removeProduct(prodName,quantity){
     ///////////Bug
-    /// need to get the whole product
-    ////console.log(prodName);
-    // let prod = this.cartObj.search(prodName);
+    // need to get the whole product
+    //console.log(prodName);
+    //let prod = this.cartObj.search(prodName);
+    let prod = this.PService.getProduct(prodName).subscribe(data=>{
+      console.log("inside observer")
+      console.log(data);
+      console.log(data[0].UnitsInStock);
+      data[0].UnitsInStock += parseInt(quantity);
+      
+      this.PService.updateProduct(data[0], data[0]._id).subscribe((data)=>{
+          console.log("update")
+          console.log(data);
+          this.cartObj.removeProduct(prod);
+        });
+    });
     // console.log("removeProduct");
     // console.log(prod);
+    // console.log("this was product");
+    // console.log(prod);
+    
     // prod["UnitsInStock"] += parseInt(quantity);
     // console.log("After");
     // console.log(prod);

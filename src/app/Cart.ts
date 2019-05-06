@@ -10,8 +10,8 @@ export  class Cart{
 
     }
 
-    addToCart(prod){
-        let num = 1;
+    addToCart(prod,num){
+        //let num = 1;
         // console.log("add to cart service");
         // console.log(prod);
         let idx = this.search(prod["ProductName"]);
@@ -21,7 +21,7 @@ export  class Cart{
              console.log(idx["quantity"]);
              this.cartList.forEach(element => {
                 if( element["ProductName"] == idx["ProductName"])
-                element["quantity"] += 1;
+                element["quantity"] += num;
         })
         }
 
@@ -34,7 +34,9 @@ export  class Cart{
                 quantity:num,
                 price:prod["UnitPrice"],
             };
-            // console.log("obj");
+
+             console.log("Product in cart");
+             console.log(obj);
             // console.log(obj);
             this.cartList.push(obj);
         }
