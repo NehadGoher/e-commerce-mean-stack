@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-
+import {ProductServiceService} from './product-service.service'
 @Injectable({
     providedIn: 'root'
   })
 export  class Cart{
 
     cartList :any = []
-    constructor(){
+    constructor(private PService:ProductServiceService){
 
     }
 
@@ -29,7 +29,7 @@ export  class Cart{
             
             let obj = {
                 ProductID:prod["ProductID"],
-                username:"nehad",
+                username:this.PService.validname,
                 ProductName:prod["ProductName"],
                 quantity:num,
                 price:prod["UnitPrice"],

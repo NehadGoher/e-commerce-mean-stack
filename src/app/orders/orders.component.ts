@@ -60,21 +60,21 @@ for(let x of this.ordersNo)
       console.log(data);
     })
   }
-  addCart(prodName){
+  addCart(prodName,quantity){
     /////////////add quantity
-   let num = 1;
-    console.log(prodName);
     var index = this.search(prodName);
     // console.log("index");
     // console.log(index);
-    if(index &&index["UnitsInStock"] !=0){
+    console.log(quantity);
+    if(index &&index["UnitsInStock"] >=quantity){
       //console.log(index["UnitsInStock"])
-      this.cart.addToCart(index,num);
-      index["UnitsInStock"] -= num;
+      this.cart.addToCart(index,quantity);
+      index["UnitsInStock"] -= quantity;
 
       this.PService.updateProduct(index,index["_id"]).subscribe((data)=>{
-        console.log("update")
-        console.log(data)
+        // console.log("update")
+        // console.log(data)
+        this.load();
       });
     }
 
