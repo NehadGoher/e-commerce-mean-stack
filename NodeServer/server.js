@@ -121,14 +121,9 @@ app.get('/allproducts/:pa',function(req,res){
  
   mongo.connect(url, function(err, db) {
       if (err) throw err;
-<<<<<<< HEAD
     //var dbo = db.db("OnlineShopping");
       var dbo = db.db("e-commerce");
 page = parseInt(req.params.pa);
-=======
-    var dbo = db.db("OnlineShopping");
-    //  var dbo = db.db("e-commerce");
->>>>>>> d176e22d1bcdf4d2ee6e8ad4a9e7946f6307d755
 
     dbo.collection("products").find({}).skip((page-1)*10).limit(10).toArray(function(err, result) {
       if (err) throw err;
