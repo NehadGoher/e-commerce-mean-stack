@@ -12,6 +12,7 @@ import {Cart} from '../Cart'
 export class ProductsComponent implements OnInit {
 
   products :any;
+  pageNum  =1;
   constructor(private PService:ProductServiceService, private cart:Cart) { 
    // this.products = this.PService.getProp();
 
@@ -25,7 +26,7 @@ export class ProductsComponent implements OnInit {
     console.log(this.clicked);
    }
   load(){
-    this.PService.getProducts().subscribe(data=>{
+    this.PService.getProducts(this.pageNum).subscribe(data=>{
       this.products = data;
       console.log(data);
       console.log("Loaded");
@@ -36,6 +37,12 @@ export class ProductsComponent implements OnInit {
    this.load();
     
    
+  }
+
+  changePage(num){
+    console.log(num);
+    this.pageNum = parseInt(num);
+    this.load();
   }
 
   addCart(prodName,quantity){

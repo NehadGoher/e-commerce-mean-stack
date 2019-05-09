@@ -25,11 +25,13 @@ Pid;
   constructor(private PService:ProductServiceService) {
     this.load();
    }
-load()
+
+   pageNum  =1;
+   load()
 {
   this.PService
-  .getProducts()
-  .subscribe((data :Product) => {
+  .getProducts(this.pageNum)
+  .subscribe((data :any) => {
     this.products=data;
     this.index=this.products[this.products.length-1].ProductID;
   //   console.log("hii");
@@ -41,6 +43,12 @@ load()
   productobj:Product;
   addProduct(){
     this.visible=0;
+  }
+
+  changePage(num){
+    console.log(num);
+    this.pageNum = parseInt(num);
+    this.load();
   }
   add()
   {

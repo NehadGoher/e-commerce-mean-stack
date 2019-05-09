@@ -1,6 +1,6 @@
 <img src="../../assets/images/banner.png">
 <div class="col-12 row" id="body">
-  <div *ngFor="let item of products" class="offset-1 col -5">
+  <div *ngFor="let item of products" class="offset-1 col-5">
     <div class="card col-12">
       <img class="card-img-top w-50 offset-3" src="../../assets/images/product.jpg" alt="Card image">
       <div class="card-body">
@@ -47,3 +47,17 @@ aria-hidden="true">
   </div>
 </div>
 </div>
+
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination pagination-lg">
+    <li><a routerLink="../Product" (click)=changePage(1)>1</a></li>
+  <li><a routerLink="../Product" (click)=changePage(2)>2</a></li>
+  <li><a routerLink="../Product" (click)=changePage(3)>3</a></li>
+  <li><a routerLink="../Product" (click)=changePage(4)>4</a></li>
+  <li><a routerLink="../Product" (click)=changePage(5)>5</a></li>
+  <li><a routerLink="../Product" (click)=changePage(6)>6</a></li>
+  <li><a routerLink="../Product" (click)=changePage(7)>7</a></li>
+  </ul>
+</nav>

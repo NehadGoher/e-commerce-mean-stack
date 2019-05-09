@@ -29,8 +29,8 @@
     <td class="col-sm-1">{{i.UnitsOnOrder}}</td>
     <td class="col-sm-1">{{i.ReorderLevel}}</td>
     <td class="col-sm-1">{{i.Discontinued}}</td>
-    <td class="col-sm-1"><input type="button" class=" btn-danger" value="Delete" (click)="delete(i._id)"></td>
-    <td class="col-sm-1"><input type="button" value="Edit" (click)="update(i._id,i.ProductName,i.ProductID)"></td>
+    <td class="col-sm-1"><input type="button" class="btn btn-danger" value="Delete" (click)="delete(i._id)"></td>
+    <td class="col-sm-1"><input type="button" class="btn btn-info" value="Edit" (click)="update(i._id,i.ProductName,i.ProductID)"></td>
   </tr>
   </tbody>
 </table>
@@ -60,3 +60,18 @@
 <input type="button" id="sub" value="Submit" class="btn btn-light col-2" (click)="updateProduct()" >
 
 </form>
+
+
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination pagination-lg">
+    <li><a routerLink="../admin" (click)=changePage(1)>1</a></li>
+  <li><a routerLink="../admin" (click)=changePage(2)>2</a></li>
+  <li><a routerLink="../admin" (click)=changePage(3)>3</a></li>
+  <li><a routerLink="../admin" (click)=changePage(4)>4</a></li>
+  <li><a routerLink="../admin" (click)=changePage(5)>5</a></li>
+  <li><a routerLink="../admin" (click)=changePage(6)>6</a></li>
+  <li><a routerLink="../admin" (click)=changePage(7)>7</a></li>
+  </ul>
+</nav>

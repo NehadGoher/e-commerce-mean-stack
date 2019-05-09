@@ -117,13 +117,15 @@ app.post('/product',function(req,res){
 });
 
 //get all products
-app.get('/products',function(req,res){
+app.get('/allproducts/:pa',function(req,res){
+ 
   mongo.connect(url, function(err, db) {
       if (err) throw err;
     //var dbo = db.db("OnlineShopping");
       var dbo = db.db("e-commerce");
+page = parseInt(req.params.pa);
 
-    dbo.collection("products").find({}).toArray(function(err, result) {
+    dbo.collection("products").find({}).skip((page-1)*10).limit(10).toArray(function(err, result) {
       if (err) throw err;
       res.send(result);
      // console.log(result);

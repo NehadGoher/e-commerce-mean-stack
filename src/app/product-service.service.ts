@@ -21,9 +21,14 @@ validname="";
     this.key = keyword;
     return this.http.get(`${this.uri}`+"products/"+keyword);
   }
-  getProducts()
+  getProducts(page)
   {
-    return this.http.get(`${this.uri}`+"products");
+    var obj:any = {
+      p:page
+    };
+    console.log("helllooooo")
+    console.log(obj)
+    return this.http.get(`${this.uri}allproducts/${page}`);
 
   }
   addProduct(obj)
