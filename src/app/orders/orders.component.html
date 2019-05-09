@@ -13,7 +13,7 @@
         <td class="col-2">{{j.ProductName}}</td>
         <td class="col-2">{{j.quantity}}</td>
         <td class="col-2">{{j.price}}</td>
-       <td> <input type="button" class="btn btn-light" value="ReOrder" (click)="addCart(j.ProductName)"></td>
+       <td> <input type="button" class="btn btn-light" value="ReOrder" (click)="addCart(j.ProductName,j.quantity)"></td>
       </tr>
     </tbody>
   </table>
